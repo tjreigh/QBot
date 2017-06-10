@@ -1,6 +1,7 @@
 # QBot
 
 <b> What is it </b><br>
+A Bot who's main purpose is quoting user's messages!
 
 <b>The Team</b>
  <table style="width:100%">
