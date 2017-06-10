@@ -8,7 +8,7 @@ module.exports = class HQCommand extends commando.Command {
       aliases: ['server', 'helpserver', 'officialserver', 'devsserevr'],
       group: 'support',
       memberName: 'hq',
-      description: 'Sends an invite to the official SmoreSoftware devs server.',
+      description: 'Sends an invite to the official SmoreSoftware Discord.',
       details: oneLine `
         Do you need help with QuoteBot? Want to suggest a feature? Just want to drop by and meet the developers?
         This command sends an invite to the official SmoreSoftware developers server.
