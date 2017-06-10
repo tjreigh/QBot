@@ -1,6 +1,9 @@
 # CONFIG JSON'S
 *.json
 
+#Settigs db
+settings.sqlite3
+
 # Logs
 logs
 *.log
