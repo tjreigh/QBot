@@ -1,6 +1,8 @@
 const commando = require('discord.js-commando');
 const oneLine = require('common-tags').oneLine;
 const Discord = require('discord.js');
+const moment = require('moment');
+require('moment-duration-format');
 
 module.exports = class QuoteCommand extends commando.Command {
   constructor(client) {
@@ -35,21 +37,21 @@ module.exports = class QuoteCommand extends commando.Command {
       messages = messages.filterArray(function(message) {
         return message.author.id === args.user.id
       })
-      messages = messages.map(m => m.content)
+      let msgs = messages.map(m => m.content)
       const embed = new Discord.RichEmbed()
         .setTitle(`**Quotes**`)
         .setAuthor(quoteUser.username, quoteUser.avatarURL)
-        .setColor(0xFF0000)
-        .setDescription(`1: \`${messages[0]}\`
-2: \`${messages[1]}\`
-3: \`${messages[2]}\`
-4: \`${messages[3]}\`
-5: \`${messages[4]}\`
-6: \`${messages[5]}\`
-7: \`${messages[6]}\`
-8: \`${messages[7]}\`
-9: \`${messages[8]}\`
-10: \`${messages[9]}\``)
+        .setColor(0x00CCFF)
+        .setDescription(`1: \`${msgs[0]}\`
+2: \`${msgs[1]}\`
+3: \`${msgs[2]}\`
+4: \`${msgs[3]}\`
+5: \`${msgs[4]}\`
+6: \`${msgs[5]}\`
+7: \`${msgs[6]}\`
+8: \`${msgs[7]}\`
+9: \`${msgs[8]}\`
+10: \`${msgs[9]}\``)
         .setFooter("QBot")
         .setTimestamp()
       message.channel.send("The last 10 messages of the user are below.")
@@ -73,9 +75,20 @@ module.exports = class QuoteCommand extends commando.Command {
           let quote = collected.last().content.split(" ").slice(1)
           quote = parseInt(quote)
           quote = quote - 1
-          let toQuote = messages[`${quote}`]
-          message.channel.send(`"${toQuote}"
--${quoteUser.username}, 2K17`)
+          let toQuote = msgs[`${quote}`]
+          console.log(messages[`${quote}`].createdAt)
+          const rawTime = Date.now() - messages[`${quote}`].createdAt
+          console.log(rawTime)
+          const sentAgo = moment.duration(rawTime).format(` D [days], H [hours], m [minutes] & s [seconds]`)
+          const embed = new Discord.RichEmbed()
+            .setTitle(``)
+            .setAuthor(quoteUser.username, quoteUser.avatarURL)
+            .setColor(0x00CCFF)
+            .setDescription(`"${toQuote}"`)
+            .setFooter(`Message sent ${sentAgo} ago.`)
+          message.channel.send({
+            embed: embed
+          })
         }
       })
     })
