@@ -1,3 +1,6 @@
+# CONFIG JSON'S
+*.json
+
 # Logs
 logs
 *.log
