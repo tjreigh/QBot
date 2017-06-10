@@ -36,13 +36,13 @@ module.exports = class SupportCommand extends commando.Command {
     this.client.channels.get(supportChan).send({
       embed: embed
     })
-    const collector = this.client.channels.get(supportChan).createCollector(message => message.content.startsWith(message.guild.commandPrefix), {
+    const collector = this.client.channels.get(supportChan).createCollector(message => message.content.startsWith('call'), {
       time: 0
     })
-    this.client.channels.get(supportChan).send(`Do \`${message.guild.commandPrefix}answer\` to answer call and connect to server in need or \`${message.guild.commandPrefix}end\` to deny call.`)
+    this.client.channels.get(supportChan).send(`Do \`call answer\` to answer call and connect to server in need or \`call end\` to deny call.`)
     collector.on("message", (message) => {
-      if (message.content === message.guild.commandPrefix + "end") collector.stop("aborted")
-      if (message.content === message.guild.commandPrefix + "answer") collector.stop("success")
+      if (message.content === "call end") collector.stop("aborted")
+      if (message.content === "call answer") collector.stop("success")
     })
     collector.on("end", (collected, reason) => {
       if (reason === "time") return message.reply("The call timed out.")
@@ -60,7 +60,7 @@ module.exports = class SupportCommand extends commando.Command {
           function contact() {
             if (isEnabled === false) return
             if (message.author.id === '322882931746013185') return
-            if (message.content.startsWith(message.guild.commandPrefix + "end")) {
+            if (message.content.startsWith("call end")) {
               message.channel.send(":x: Call has been hung up.")
               if (message.channel.id === chan.id) client.channels.get(supportChan).send(":x: The call was ended from the other side.")
               if (message.channel.id === supportChan) chan.send(":x: The call was ended from the other side.")
