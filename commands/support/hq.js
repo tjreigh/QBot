@@ -20,7 +20,7 @@ module.exports = class HQCommand extends commando.Command {
   }
 
   async run(message, args) {
-    message.channel.send(`**Need help?** Come join the official SmoreSoftware devs server!
+    message.channel.send(`**Need help?** Come join the official SmoreSoftware Discord!
 https://discord.gg/89JttFv`)
   }
 };
