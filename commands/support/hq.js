@@ -23,7 +23,7 @@ module.exports = class HQCommand extends commando.Command {
     message.channel.send(`**Need help?**
 Come join the official SmoreSoftware Discord server!
 https://discord.gg/89JttFv
-Need some quick helP? Call the developers!
+Need some quick help? Call the developers!
 Do \`${message.guild.commandPrefix} support\`
 Want to suggest something?
 Do \`${message.guild.commandPrefix}suggest\``)
