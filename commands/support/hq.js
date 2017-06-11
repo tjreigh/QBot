@@ -11,7 +11,7 @@ module.exports = class HQCommand extends commando.Command {
       description: 'Sends an invite to the official SmoreSoftware Discord!',
       details: oneLine `
         Do you need help with QuoteBot? Want to suggest a feature? Just want to drop by and meet the developers?
-        This command sends an invite to the official SmoreSoftware developers server.
+        This command sends an invite to the official SmoreSoftware Discord server.
 			`,
       examples: ['support'],
       guildOnly: true,
@@ -20,7 +20,12 @@ module.exports = class HQCommand extends commando.Command {
   }
 
   async run(message, args) {
-    message.channel.send(`**Need help?** Come join the official SmoreSoftware Discord!
-https://discord.gg/89JttFv`)
+    message.channel.send(`**Need help?**
+Come join the official SmoreSoftware Discord server!
+https://discord.gg/89JttFv
+Need some quick helP? Call the developers!
+Do \`${message.guild.commandPrefix} support\`
+Want to suggest something?
+Do \`${message.guild.commandPrefix}suggest\``)
   }
 };
