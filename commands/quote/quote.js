@@ -89,9 +89,11 @@ module.exports = class QuoteCommand extends commando.Command {
             .setDescription(`"${toQuote}"`)
             .setFooter(`Message sent ${sentAgo} ago.`)
           message.delete(5)
-          await message.channel.send({
-            embed: embed
-          })
+            .then(() => {
+              message.channel.send({
+                embed: embed
+              })
+            })
         }
       })
     })
