@@ -6,7 +6,7 @@ module.exports = class SupportCommand extends commando.Command {
   constructor(client) {
     super(client, {
       name: 'support',
-      aliases: ['call', 'contact', 'supportcall', 'helpme'],
+      aliases: ['call', 'contact', 'supportcall', 'helpme', 'howtouse'],
       group: 'support',
       memberName: 'support',
       description: 'Calls the developer server for support.',
