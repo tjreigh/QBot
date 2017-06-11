@@ -92,7 +92,7 @@ client
       const embed = new Discord.RichEmbed()
         .setAuthor(msg.author.username, msg.author.avatarURL)
         .setColor(0xCCA300)
-        .addField('ID', `${msg.id}`, true)
+        .addField('Starred By', `${user.username}`, true)
         .addField('Channel', `${msg.channel}`, true)
         .addField('Message', `${msg.content}`, false)
         .setFooter(`⭐ ${client.user.username} Starboard ⭐`)
