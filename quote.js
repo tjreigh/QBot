@@ -29,7 +29,7 @@ client
   .on('debug', () => console.log)
   .on('ready', () => {
     console.log(`Client ready; logged in as ${client.user.tag} (${client.user.id})`)
-    client.user.setGame('q.help | Pre-Alpha')
+    client.user.setGame('q.help | Beta')
   })
   .on('disconnect', () => console.warn('Disconnected!'))
   .on('reconnecting', () => console.warn('Reconnecting...'))
