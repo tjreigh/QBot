@@ -88,7 +88,7 @@ module.exports = class QuoteCommand extends commando.Command {
             .setColor(0x00CCFF)
             .setDescription(`"${toQuote}"`)
             .setFooter(`Message sent ${sentAgo} ago.`)
-          message.delete(5)
+          message.bulkDelete(5)
             .then(() => {
               message.channel.send({
                 embed: embed
