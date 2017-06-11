@@ -30,7 +30,7 @@ module.exports = class SuggestCommand extends commando.Command {
     const embed = new Discord.RichEmbed()
       .setAuthor(`${message.author.tag}`, `${message.author.avatarURL}`)
       .setColor(0x0000FF)
-      .setDescription(`**${args.toEcho}**`)
+      .setDescription(`${args.toEcho}`)
       .setFooter(`Message echoed from: ${message.author.username}`)
       .setTimestamp()
     message.delete(1)
