@@ -35,7 +35,7 @@ module.exports = class SuggestCommand extends commando.Command {
       .setFooter(`Message echoed from: ${message.author.username}`)
       .setTimestamp()
     message.delete(1)
-    message.channel.send({
+    await message.channel.send({
       embed
     })
   }
