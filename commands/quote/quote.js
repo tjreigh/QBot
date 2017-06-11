@@ -38,11 +38,8 @@ module.exports = class QuoteCommand extends commando.Command {
         return message.author.id === args.user.id
       })
       let msgs = messages.map(m => m.content)
-      const embed = new Discord.RichEmbed()
-        .setTitle(`**Quotes**`)
-        .setAuthor(quoteUser.username, quoteUser.avatarURL)
-        .setColor(0x00CCFF)
-        .setDescription(`1: \`${msgs[0]}\`
+      if (msgs.includes(undefined)) return message.reply("This user does not have enough recent messages!")
+      let quotes = `1: \`${msgs[0]}\`
 2: \`${msgs[1]}\`
 3: \`${msgs[2]}\`
 4: \`${msgs[3]}\`
@@ -51,7 +48,12 @@ module.exports = class QuoteCommand extends commando.Command {
 7: \`${msgs[6]}\`
 8: \`${msgs[7]}\`
 9: \`${msgs[8]}\`
-10: \`${msgs[9]}\``)
+10: \`${msgs[9]}\``
+      const embed = new Discord.RichEmbed()
+        .setTitle(`**Quotes**`)
+        .setAuthor(quoteUser.username, quoteUser.avatarURL)
+        .setColor(0x00CCFF)
+        .setDescription(clean(quotes))
         .setFooter("QBot")
         .setTimestamp()
       message.channel.send("The last 10 messages of the user are below.")
@@ -92,5 +94,12 @@ module.exports = class QuoteCommand extends commando.Command {
         }
       })
     })
+
+    function clean(text) {
+      if (typeof(text) === 'string')
+        return text.replace(/`/g, '``' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
+      else
+        return text;
+    }
   }
 };
