@@ -46,8 +46,12 @@ module.exports = class SettingsCommand extends commando.Command {
     });
   }
 
+  hasPermission(msg) {
+    if (!msg.guild) return this.client.isOwner(msg.author);
+    return msg.member.hasPermission('ADMINISTRATOR');
+  }
+
   async run(message, args) {
-    //if (message.author !== message.guild.owner) return message.reply(':warning: **You do not have permission to use this command!**')
     if (args.action.toLowerCase() === 'add') {
       if (args.setting.toLowerCase() === 'starboard') {
         const rawChan = message.mentions.channels.first()
