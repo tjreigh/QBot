@@ -28,11 +28,9 @@ module.exports = class SuggestCommand extends commando.Command {
 
   async run(message, args) {
     const embed = new Discord.RichEmbed()
-      .setTitle(`:speaking_head: Echo:`)
       .setAuthor(`${message.author.tag}`, `${message.author.avatarURL}`)
-      .setTitle('\u200B')
       .setColor(0x0000FF)
-      .setDescription(`**${args.toEcho}**`)
+      .setDescription(`${args.toEcho}`)
       .setFooter(`Message echoed from: ${message.author.username}`)
       .setTimestamp()
     message.delete(1)
