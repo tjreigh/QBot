@@ -85,9 +85,9 @@ client
   .on('guildCreate', (guild) => {
     console.log(`New guild added: ${guild.name} (${guild.id}), owned by ${guild.owner.user.tag} (${guild.owner.id}).`)
   })
-  .on('messageReactionAdd', (reaction) => {
-    console.log('new reaction')
-    if (reaction.emoji.name ===  '⭐') {
+  .on('messageReactionAdd', (reaction, user) => {
+    //console.log('new reaction')
+    if (reaction.emoji.name === '⭐') {
       let msg = reaction.message
       const embed = new Discord.RichEmbed()
         .setAuthor(msg.author.username, msg.author.avatarURL)
@@ -99,6 +99,7 @@ client
         .setTimestamp()
       let starboard = client.channels.get(msg.guild.settings.get('starboard'))
       if (!starboard) return
+      if (user.id === msg.author.id) return msg.channel.send(`${msg.author}, You can't star your own messages!`)
       starboard.send({
         embed: embed
       })
