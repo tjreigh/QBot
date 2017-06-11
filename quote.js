@@ -14,7 +14,8 @@ client.registry
     ['quote', 'Quote'],
     ['misc', 'Miscellaneous'],
     ['support', 'Support'],
-    ['control', 'Bot Owners Only']
+    ['control', 'Bot Owners Only'],
+    ['fun', 'Fun']
   ])
 
   .registerDefaults()
