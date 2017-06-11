@@ -3,9 +3,10 @@ const client = new commando.Client({
   owner: ['197891949913571329', '251383432331001856'],
   commandPrefix: 'q.'
 });
+let Discord = require('discord.js');
 //const defclient = new Discord.Client();
-const path = require('path');
-const sqlite = require('sqlite')
+const path = require('path');;
+const sqlite = require('sqlite');
 const oneLine = require('common-tags').oneLine;
 const config = require('./config.json');
 
@@ -86,17 +87,17 @@ client
   })
   .on('messageReactionAdd', (reaction) => {
     console.log('new reaction')
-    if (reaction.emoji.name === 'star') {
+    if (reaction.emoji.name ===  '⭐') {
       let msg = reaction.message
       const embed = new Discord.RichEmbed()
-        .setAuthor(msg.author, msg.avatarURL)
-        .setColor(0x00CCFF)
-        .addField('ID', `${msg.id}`)
-        .addField('Channel', `${msg.channel}`)
-        .addField('Message', `${msg.content}`)
+        .setAuthor(msg.author.username, msg.author.avatarURL)
+        .setColor(0xCCA300)
+        .addField('ID', `${msg.id}`, true)
+        .addField('Channel', `${msg.channel}`, true)
+        .addField('Message', `${msg.content}`, false)
+        .setFooter(`⭐ ${client.user.username} Starboard ⭐`)
         .setTimestamp()
       let starboard = client.channels.get(msg.guild.settings.get('starboard'))
-      console.log(starboard)
       if (!starboard) return
       starboard.send({
         embed: embed
