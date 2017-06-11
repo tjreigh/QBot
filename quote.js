@@ -83,6 +83,25 @@ client
   .on('guildCreate', (guild) => {
     console.log(`New guild added: ${guild.name} (${guild.id}), owned by ${guild.owner.user.tag} (${guild.owner.id}).`)
   })
+  .on('messageReactionAdd', (reaction) => {
+    console.log('new reaction')
+    if (reaction.emoji.name === 'star') {
+      let msg = reaction.message
+      const embed = new Discord.RichEmbed()
+        .setAuthor(msg.author, msg.avatarURL)
+        .setColor(0x00CCFF)
+        .addField('ID', `${msg.id}`)
+        .addField('Channel', `${msg.channel}`)
+        .addField('Message', `${msg.content}`)
+        .setTimestamp()
+      let starboard = client.channels.get(msg.guild.settings.get('starboard'))
+      console.log(starboard)
+      if (!starboard) return
+      starboard.send({
+        embed: embed
+      })
+    }
+  })
 
 client.login(config.token).catch(console.error);
 
