@@ -15,26 +15,28 @@ module.exports = class SuggestCommand extends commando.Command {
 			`,
       examples: ['echo lol'],
       args: [{
-          key: 'toEcho',
-          label: 'echo',
-          prompt: 'What would you like me to say?',
-          type: 'string',
-          infinite: false
-        }
-      ],
+        key: 'toEcho',
+        label: 'echo',
+        prompt: 'What would you like me to say?',
+        type: 'string',
+        infinite: false
+      }],
       guildOnly: true,
       guarded: true
     })
   }
 
   async run(message, args) {
-        const embed = new Discord.RichEmbed()
-          .setTitle(`:speaking_head: Echo:`)
-          .setAuthor(`${message.author.tag}`, `${message.author.avatarURL}`)
-          .setColor(0x0000FF)
-          .setDescription(`${args.toEcho}`)
-          .setFooter(`Message echoed from: ${message.author.username}`)
-          .setTimestamp()
-    message.channel.send({ embed });
+    const embed = new Discord.RichEmbed()
+      .setTitle(`:speaking_head: Echo:`)
+      .setAuthor(`${message.author.tag}`, `${message.author.avatarURL}`)
+      .setColor(0x0000FF)
+      .setDescription(`${args.toEcho}`)
+      .setFooter(`Message echoed from: ${message.author.username}`)
+      .setTimestamp()
+    message.delete(1)
+    message.channel.send({
+      embed
+    })
   }
 };
