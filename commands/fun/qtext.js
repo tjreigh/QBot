@@ -37,6 +37,6 @@ module.exports = class SuggestCommand extends commando.Command {
 
   async run(message, args) {
     let qbert = randomtext()
-    message.reply(qbert)
+    message.reply(qbert * message.length)
   }
 };
