@@ -1,16 +1,6 @@
 const commando = require('discord.js-commando');
 const oneLine = require('common-tags').oneLine;
 const Discord = require('discord.js');
-function randomtext()
-{
-    let text = "";
-    let possible = "@#%>?";
-
-    for( var i=0; i < 5; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length * message.content.length));
-
-    return text;
-}
 
 module.exports = class SuggestCommand extends commando.Command {
   constructor(client) {
@@ -36,12 +26,22 @@ module.exports = class SuggestCommand extends commando.Command {
   }
 
   async run(message, args) {
-<<<<<<< HEAD
-    let qbert = randomtext(message)
-    message.reply()
-=======
+    let toQbert = message.content.split(" ").slice(1).join(" ")
+
+    function randomtext() {
+      let text = "";
+      let possible = "@#%><?!&^+=";
+
+      for (var i = 0; i < toQbert.length; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+      return text;
+    }
+
     let qbert = randomtext()
-    message.reply(qbert)
->>>>>>> parent of 83fe2ef... Update
+    message.delete(1)
+      .then(() => {
+        message.channel.send(qbert)
+      })
   }
 };
