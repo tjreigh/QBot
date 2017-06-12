@@ -7,7 +7,7 @@ function randomtext()
     let possible = "@#%>?";
 
     for( var i=0; i < 5; i++ )
-        text += possible.charAt(Math.floor(Math.random() * possible.length) * message.content.length);
+        text += possible.charAt(Math.floor(Math.random() * possible.length * message.content.length));
 
     return text;
 }
@@ -36,7 +36,7 @@ module.exports = class SuggestCommand extends commando.Command {
   }
 
   async run(message, args) {
-    let qbert = randomtext()
+    let qbert = randomtext(message)
     message.reply()
   }
 };
