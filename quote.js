@@ -88,7 +88,7 @@ client
   .on('messageReactionAdd', (reaction, user) => {
     //console.log('new reaction')
     if (reaction.emoji.name === '⭐') {
-      let msg = reaction.message
+      let msg = reaction.messag
       const embed = new Discord.RichEmbed()
         .setAuthor(msg.author.username, msg.author.avatarURL)
         .setColor(0xCCA300)
@@ -100,6 +100,7 @@ client
       let starboard = client.channels.get(msg.guild.settings.get('starboard'))
       if (!starboard) return
       if (user.id === msg.author.id) return msg.channel.send(`${msg.author}, You can't star your own messages!`)
+      if (msg.reactions.length > 1 && reaction.emoji.name === '⭐') return
       starboard.send({
         embed: embed
       })
