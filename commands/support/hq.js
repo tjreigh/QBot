@@ -14,7 +14,6 @@ module.exports = class HQCommand extends commando.Command {
         This command sends an invite to the official SmoreSoftware Discord server.
 			`,
       examples: ['support'],
-      guildOnly: true,
       guarded: true
     })
   }

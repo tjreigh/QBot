@@ -21,7 +21,6 @@ module.exports = class SuggestCommand extends commando.Command {
         type: 'string',
         infinite: false
       }],
-      guildOnly: true,
       guarded: true
     })
   }

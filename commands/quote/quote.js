@@ -24,7 +24,6 @@ module.exports = class QuoteCommand extends commando.Command {
         type: 'member',
         infinite: false
       }],
-      guildOnly: true,
       guarded: true
     })
   }
