@@ -36,7 +36,12 @@ module.exports = class SuggestCommand extends commando.Command {
   }
 
   async run(message, args) {
+<<<<<<< HEAD
     let qbert = randomtext(message)
     message.reply()
+=======
+    let qbert = randomtext()
+    message.reply(qbert)
+>>>>>>> parent of 83fe2ef... Update
   }
 };
