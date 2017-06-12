@@ -100,7 +100,10 @@ client
       let starboard = client.channels.get(msg.guild.settings.get('starboard'))
       if (!starboard) return
       if (user.id === msg.author.id) return msg.channel.send(`${msg.author}, You can't star your own messages!`)
-      if (msg.reactions.length > 1 && reaction.emoji.name === '⭐') return
+      msg.reactions.filter(fuction(reacts) {
+        return reacts.emoji.name === '⭐'
+      })
+      if (reacts.length > 1) return
       starboard.send({
         embed: embed
       })
