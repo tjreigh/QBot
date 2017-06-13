@@ -1,7 +1,8 @@
 const commando = require('discord.js-commando');
 const client = new commando.Client({
   owner: ['197891949913571329', '251383432331001856'],
-  commandPrefix: 'q.'
+  commandPrefix: 'q.',
+  unknownCommandMessage: false
 });
 let Discord = require('discord.js');
 //const defclient = new Discord.Client();
