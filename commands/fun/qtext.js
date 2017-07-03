@@ -1,39 +1,40 @@
+//eslint-disable-next-line
 const commando = require('discord.js-commando');
 const oneLine = require('common-tags').oneLine;
-const Discord = require('discord.js');
 
-module.exports = class SuggestCommand extends commando.Command {
+
+module.exports = class QTextCommand extends commando.Command {
   constructor(client) {
     super(client, {
       name: 'qtext',
       group: 'fun',
       memberName: 'qtext',
-      description: 'random qbert text!',
+      description: 'Translates a message into QBert language.',
       details: oneLine `
-        qbert like text!
+        Do you like QBert's language?
+        This command translates what you give it into QBert language.
 			`,
-      examples: ['qtext'],
+      examples: ['qtext lelelelel this is in QBert language'],
       args: [{
         key: 'toQtext',
         label: 'qtext',
-        prompt: 'Random Text',
+        prompt: 'What would you like to translate?',
         type: 'string',
         infinite: false
-      }],
-      guildOnly: true,
-      guarded: true
+      }]
     })
   }
 
-  async run(message, args) {
-    let toQbert = message.content.split(" ").slice(1).join(" ")
+  //eslint-disable-next-line class-methods-use-this
+  async run(message) {
+    //eslint-disable-next-line newline-per-chained-call
+    let toQbert = message.content.split(' ').slice(1).join(' ')
 
     function randomtext() {
-      let text = "";
-      let possible = "@#%><?!&^+=";
+      let text = '';
+      let possible = '@#%><?!&^+=';
 
-      for (var i = 0; i < toQbert.length; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
+      for (let i = 0;i < toQbert.length;i++) text += possible.charAt(Math.floor(Math.random() * possible.length));
 
       return text;
     }

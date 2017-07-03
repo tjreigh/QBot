@@ -1,6 +1,6 @@
+//eslint-disable-next-line
 const commando = require('discord.js-commando');
 const oneLine = require('common-tags').oneLine;
-const client = require(`discord.js`)
 
 module.exports = class HQCommand extends commando.Command {
   constructor(client) {
@@ -13,13 +13,12 @@ module.exports = class HQCommand extends commando.Command {
       details: oneLine `
         sends an invite for the bot
 			`,
-      examples: ['support'],
-      guildOnly: true,
+      examples: ['invite'],
       guarded: true
     })
   }
 
-  async run(message, args) {
+  async run(message) {
     message.channel.send(`Here is a link to add me: https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&scope=bot&permissions=2146958463`)
   }
 };

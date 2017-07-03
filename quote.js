@@ -1,3 +1,4 @@
+//eslint-disable-next-line
 const commando = require('discord.js-commando');
 const client = new commando.Client({
   owner: ['197891949913571329', '251383432331001856'],
@@ -6,7 +7,7 @@ const client = new commando.Client({
 });
 let Discord = require('discord.js');
 //const defclient = new Discord.Client();
-const path = require('path');;
+const path = require('path');
 const sqlite = require('sqlite');
 const oneLine = require('common-tags').oneLine;
 const config = require('./config.json');
@@ -66,7 +67,7 @@ client
 			${guild ? `in guild ${guild.name} (${guild.id})` : 'globally'}.
 		`);
   })
-  .on('commandRun', (command, promise, msg, args) => {
+  .on('commandRun', (command, promise, msg) => {
     if (msg.guild) {
       console.log(`Command ran
         Guild: ${msg.guild.name} (${msg.guild.id})
@@ -101,9 +102,11 @@ client
       let starboard = client.channels.get(msg.guild.settings.get('starboard'))
       if (!starboard) return
       if (user.id === msg.author.id) return msg.channel.send(`${msg.author}, You can't star your own messages!`)
+      //eslint-disable-next-line no-undef
       reacts = msg.reactions.filter(function(reacts) {
         return reacts.emoji.name === '⭐'
       })
+      //eslint-disable-next-line no-undef
       if (reacts.length > 1) return
       starboard.send({
         embed: embed
