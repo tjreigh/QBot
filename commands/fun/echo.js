@@ -1,9 +1,7 @@
 //eslint-disable-next-line
 const commando = require('discord.js-commando');
 const oneLine = require('common-tags').oneLine;
-const {
-  RichEmbed
-} = require('discord.js');
+const { RichEmbed } = require('discord.js');
 
 module.exports = class EchoCommand extends commando.Command {
   constructor(client) {
@@ -37,8 +35,6 @@ module.exports = class EchoCommand extends commando.Command {
       .setFooter(`Message echoed from: ${message.author.username}`)
       .setTimestamp()
     message.delete(1)
-    await message.channel.send({
-      embed
-    })
+    await message.channel.send({ embed })
   }
 };

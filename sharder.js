@@ -1,4 +1,4 @@
-console.log("Sharder Ready!")
+console.log('Sharder Ready!')
 const { ShardingManager } = require('discord.js');
 const manager = new ShardingManager(`${__dirname}/quote.js`, { totalShards: 2 });
 
