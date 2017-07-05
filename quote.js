@@ -5,7 +5,9 @@ const client = new commando.Client({
   commandPrefix: 'q.',
   unknownCommandResponse: false
 });
-let Discord = require('discord.js');
+const {
+  RichEmbed
+} = require('discord.js');
 //const defclient = new Discord.Client();
 const path = require('path');
 const sqlite = require('sqlite');
@@ -91,7 +93,7 @@ client
     //console.log('new reaction')
     if (reaction.emoji.name === '⭐') {
       let msg = reaction.message
-      const embed = new Discord.RichEmbed()
+      const embed = new RichEmbed()
         .setAuthor(msg.author.username, msg.author.avatarURL)
         .setColor(0xCCA300)
         .addField('Starred By', `${user.username}`, true)

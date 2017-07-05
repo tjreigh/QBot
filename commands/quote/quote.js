@@ -1,7 +1,9 @@
 //eslint-disable-next-line
 const commando = require('discord.js-commando');
 const oneLine = require('common-tags').oneLine;
-const Discord = require('discord.js');
+const {
+  RichEmbed
+} = require('discord.js');
 const moment = require('moment');
 require('moment-duration-format');
 
@@ -51,7 +53,7 @@ module.exports = class QuoteCommand extends commando.Command {
 8: \`${msgs[7]}\`
 9: \`${msgs[8]}\`
 10: \`${msgs[9]}\``
-      const embed = new Discord.RichEmbed()
+      const embed = new RichEmbed()
         .setTitle('**Quotes**')
         .setAuthor(quoteUser.username, quoteUser.avatarURL)
         .setColor(0x00CCFF)
@@ -86,7 +88,7 @@ module.exports = class QuoteCommand extends commando.Command {
           const rawTime = Date.now() - messages[`${quote}`].createdAt
           console.log(rawTime)
           const sentAgo = moment.duration(rawTime).format(' D [days], H [hours], m [minutes] & s [seconds]')
-          const embed = new Discord.RichEmbed()
+          const embed = new RichEmbed()
             .setTitle('')
             .setAuthor(quoteUser.username, quoteUser.avatarURL)
             .setColor(0x00CCFF)
