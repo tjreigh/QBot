@@ -53,24 +53,12 @@ module.exports = class SettingsCommand extends commando.Command {
   //eslint-disable-next-line class-methods-use-this
   async run(message, args) {
     if (args.action.toLowerCase() === 'add') {
-      if (args.setting.toLowerCase() === 'mod') {
-        const rawRole = message.mentions.roles.first()
-        if (!rawRole) return message.reply('Please specify a role to set as the mod role!')
-        const roleToLog = rawRole.id
-        message.guild.settings.set('modrole', roleToLog)
-        message.reply(`Set the mod role to "<@&${message.guild.settings.get('modrole')}>"`)
-      } else if (args.setting.toLowerCase() === 'admin') {
-        const rawRole = message.mentions.roles.first()
-        if (!rawRole) return message.reply('Please specify a role to set as the admin role!')
-        const roleToLog = rawRole.id
-        message.guild.settings.set('adminrole', roleToLog)
-        message.reply(`Set the admin role to "<@&${message.guild.settings.get('adminrole')}>"`)
-      } else if (args.setting.toLowerCase() === 'modlog') {
+      if (args.setting.toLowerCase() === 'starboard') {
         const rawChan = message.mentions.channels.first()
-        if (!rawChan) return message.reply('Please specify a channel to use for the mod logs!')
+        if (!rawChan) return message.reply('Please specify a channel to use for the starboard!')
         const chanToLog = rawChan.id
-        message.guild.settings.set('modlog', chanToLog)
-        message.reply(`Set the mod log channel to "<#${message.guild.settings.get('modlog')}>"`)
+        message.guild.settings.set('starboard', chanToLog)
+        message.reply(`Set the starboard channel to "<#${message.guild.settings.get('starboard')}>"`)
       } else if (args.setting.toLowerCase() === 'announcements') {
         const state = args.value
         if (state.toLowerCase() !== 'on') {
@@ -79,26 +67,14 @@ module.exports = class SettingsCommand extends commando.Command {
         }
         message.guild.settings.set('announcements', state)
         message.reply(`Set the announcement state to "${message.guild.settings.get('announcements')}" \nDo \`${message.guild.commandPrefix}settings add announcements on\` to re-enable announcements.`)
-      } else if (args.setting.toLowerCase() === 'autorole') {
-        const rawRole = message.mentions.roles.first()
-        if (!rawRole) return message.reply('Please specify a role to set as the auto role!')
-        const roleToLog = rawRole.id
-        message.guild.settings.set('autorole', roleToLog)
-        message.reply(`Set the autorole to "<@&${message.guild.settings.get('autorole')}>"`)
       } else {
         message.reply('That\'s not a setting. Please try again.');
       }
     } else if (args.action.toLowerCase() === 'view') {
-      if (args.setting.toLowerCase() === 'mod') {
-        message.reply(`The mod role is "<@&${message.guild.settings.get('modrole')}>"`)
-      } else if (args.setting.toLowerCase() === 'admin') {
-        message.reply(`The admin role is "<@&${message.guild.settings.get('adminrole')}>"`)
-      } else if (args.setting.toLowerCase() === 'modlog') {
-        message.reply(`The mod log channel is "<#${message.guild.settings.get('modlog')}>"`)
+      if (args.setting.toLowerCase() === 'starboard') {
+        message.reply(`The starboard channel is "<#${message.guild.settings.get('starboard')}>"`)
       } else if (args.setting.toLowerCase() === 'announcements') {
         message.reply(`The announcements state is "${message.guild.settings.get('announcements')}"`)
-      } else if (args.setting.toLowerCase() === 'autorole') {
-        message.reply(`The autorole is "<&${message.guild.settings.get('autorole')}"`)
       } else {
         message.reply('That\'s not a setting. Please try again.');
       }
