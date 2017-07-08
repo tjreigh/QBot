@@ -80,8 +80,10 @@ module.exports = class SettingsCommand extends commando.Command {
       } else if (args.setting.toLowerCase() === 'announcements') {
         message.reply(`The announcements state is "${message.guild.settings.get('announcements')}"`)
       } else {
-        message.reply('Invalid command usage. Please try again.');
+        message.reply('That\'s not a setting. Please try again.')
       }
+    } else {
+      message.reply('Invalid command usage. Please try again.')
     }
   }
 };
