@@ -62,14 +62,26 @@ module.exports = class SettingsCommand extends commando.Command {
         const chanToLog = rawChan.id
         message.guild.settings.set('starboard', chanToLog)
         message.reply(`Set the starboard to "<#${message.guild.settings.get('starboard')}>"`)
+      } else if (args.setting.toLowerCase() === 'announcements') {
+        const state = args.value
+        if (state.toLowerCase() !== 'on') {
+          //eslint-disable-next-line no-useless-escape
+          if (state.toLowerCase() !== 'off') return message.reply('Invaid state! Use \`on\` or  \`off\`.')
+        }
+        message.guild.settings.set('announcements', state)
+        message.reply(`Set the announcement state to "${message.guild.settings.get('announcements')}" \nDo \`${message.guild.commandPrefix}settings add announcements on\` to re-enable announcements.`)
       } else {
         message.reply('That\'s not a setting. Please try again.');
       }
       //eslint-disable-next-line no-empty
     } else if (args.action.toLowerCase() === 'view') {
-
-    } else {
-      message.reply('Invalid command usage. Please try again.');
+      if (args.setting.toLowerCase() === 'starboard') {
+        message.reply(`The starboard channel is "<#${message.guild.settings.get('starboard')}"`)
+      } else if (args.setting.toLowerCase() === 'announcements') {
+        message.reply(`The announcements state is "${message.guild.settings.get('announcements')}"`)
+      } else {
+        message.reply('Invalid command usage. Please try again.');
+      }
     }
   }
 };
