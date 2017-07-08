@@ -25,8 +25,8 @@ module.exports = class HQCommand extends commando.Command {
 Come join the official SmoreSoftware Discord server!
 https://discord.gg/89JttFv
 Need some quick help? Call the developers!
-Do \`${message.guild ? message.guild.commandPrefix : 'ds'}support\`
+Do \`${message.guild ? message.guild.commandPrefix : 'q.'}support\`
 Want to suggest something?
-Do \`${message.guild ? message.guild.commandPrefix : 'ds'}suggest\``)
+Do \`${message.guild ? message.guild.commandPrefix : 'q.'}suggest\``)
   }
 };
