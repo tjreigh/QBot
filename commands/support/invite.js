@@ -18,7 +18,8 @@ module.exports = class HQCommand extends commando.Command {
     })
   }
 
+  //eslint-disable-next-line class-methods-use-this
   async run(message) {
-    message.channel.send(`Here is a link to add me: https://discordapp.com/oauth2/authorize?client_id=${this.client.user.id}&scope=bot&permissions=8`)
+    message.channel.send('https://discordapp.com/oauth2/authorize?permissions=104197193&scope=bot&client_id=322882931746013185')
   }
 };
