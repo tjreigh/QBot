@@ -9,6 +9,7 @@ const { RichEmbed } = require('discord.js');
 //const defclient = new Discord.Client();
 const path = require('path');
 const sqlite = require('sqlite');
+const request = require('superagent');
 const oneLine = require('common-tags').oneLine;
 const config = require('./config.json');
 
@@ -33,7 +34,20 @@ client
   .on('debug', () => console.log)
   .on('ready', () => {
     console.log(`Client ready; logged in as ${client.user.tag} (${client.user.id})`)
-    client.user.setGame('q.help | v1.1.2')
+    const dbotsToken1 = config.dbotstoken1
+    request.post(`https://discordbots.org/api/bots/${client.user.id}/stats`)
+      .set('Authorization', dbotsToken1)
+      .send({ 'server_count': client.guilds.size })
+      .end();
+    console.log('DBotsList guild count updated.')
+    const dbotsToken2 = config.dbotstoken2
+    request.post(`https://bots.discord.pw/api/bots/${client.user.id}/stats`)
+      .set('Authorization', dbotsToken2)
+      .send({ 'server_count': client.guilds.size })
+      .end();
+    console.log('DBots guild count updated.')
+    client.user.setGame(`q.help | ${client.guilds.size} servers`)
+    console.log('Awaiting actions.')
   })
   .on('disconnect', () => console.warn('Disconnected!'))
   .on('reconnecting', () => console.warn('Reconnecting...'))
