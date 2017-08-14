@@ -1,7 +1,7 @@
 //eslint-disable-next-line
 const commando = require('discord.js-commando');
 const client = new commando.Client({
-  owner: ['197891949913571329', '251383432331001856'],
+  owner: ['197891949913571329', '317072434664701954'],
   commandPrefix: 'q.',
   unknownCommandResponse: false
 });
