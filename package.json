@@ -1,0 +1,23 @@
+{
+  "name": "qbot",
+  "version": "1.0.0",
+  "description": "<b> What is it </b><br>\r A Bot who's main purpose is quoting user's messages!",
+  "main": "quote.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SmoreSoftware/QBot.git"
+  },
+  "author": "SmoreSoftware",
+  "license": "GNU GPL v3",
+  "bugs": {
+    "url": "https://github.com/SmoreSoftware/QBot/issues"
+  },
+  "homepage": "https://github.com/SmoreSoftware/QBot#readme",
+  "dependencies": {
+    "discord.js": "^11.2.1",
+    "discord.js-commando": "^0.9.0"
+  }
+}
