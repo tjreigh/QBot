@@ -12,7 +12,7 @@ A Bot who's main purpose is quoting user's messages!
   </tr>
   <tr>
     <td>Chrono</td>
-    <td>Chronomly6#8108</td>
+    <td>Chronomly#8108</td>
     <td>Head QBot Developer</td>
   </tr>
     <td>TJ</td>
